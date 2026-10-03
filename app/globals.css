@@ -8,6 +8,7 @@
   /* Fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-inter: var(--font-inter);
   --font-heading: var(--font-sans);
 
   /* Colors */
@@ -64,7 +65,7 @@
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
+  --accent: oklch(0.975 0.0207 179.25);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
@@ -88,12 +89,6 @@
 
 * {
   box-sizing: border-box;
-}
-
-body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
 h1 {
@@ -189,6 +184,6 @@ ul {
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    @apply font-inter m-0 p-0;
   }
 }

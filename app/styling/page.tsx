@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Footer from "@/components/layout/footer";
-import Header from "@/components/layout/header";
+import Header from "@/components/layout/main-nav";
 
 export default function FlexOnePage() {
   return (
@@ -17,17 +17,30 @@ export default function FlexOnePage() {
 
         <div className="flex gap-4 text-xs text-center mb-2">
           <div className="size-40 bg-primary p-4">Background Primary</div>
+
           <div className="size-40 border-primary border p-4 text-primary">
             Border Primary
           </div>
+
           <div className="size-40 outline-primary outline-4 p-4">
             Outline Primary
+          </div>
+
+          <div className="relative size-40 border border-primary">
+            <div className="text-xs">Positions (Relative/Absolute)</div>
+
+            <div className="size-16 bg-purple-400 text-center absolute bottom-2 right-5 z-10"></div>
+          </div>
+
+          <div className="size-40 bg-emerald-600 p-6">
+            Named Colors <br />
+            Amber (400)
           </div>
         </div>
 
         <h2 className="text-primary font-bold text-lg mb-2">2. Flex vs Grid</h2>
 
-        <ol className="flex flex-col gap-2 w-1/2">
+        <ol className="flex flex-raw gap-2 w-1/2 bg-black p-6">
           <Link href="/styling/flex-one">
             <li className="w-full bg-accent p-2 text-center font-semibold rounded-lg hover:underline hover:bg-purple-300">
               Example 01: Flex 1
