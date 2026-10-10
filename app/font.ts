@@ -12,5 +12,7 @@ export const geistMono = Geist_Mono({
 
 export const inter = Inter({
   variable: "--font-inter",
+  // weight: ["100", "200", "400", "500"],
+  // preload: false,
   subsets: ["latin"],
 });

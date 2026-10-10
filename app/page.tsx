@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Footer from "@/components/layout/footer";
 import MainNav from "@/components/layout/main-nav";
+import HeroBanner from "@/components/landing/hero-banner";
+import FeaturedMovies from "@/components/landing/featured-movies";
 
 export const metadata: Metadata = {
   title: "CineScope Movie Dashboard",
@@ -12,8 +14,9 @@ export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col">
       <MainNav />
-      <main className="grow container mx-auto max-w-350 p-6 min-h-screen bg-amber-200 px-8">
-        Main Content
+      <main className="grow">
+        <HeroBanner />
+        <FeaturedMovies />
       </main>
       <Footer />
     </div>
