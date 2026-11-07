@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -9,17 +12,21 @@ interface MovieCardProps {
 }
 
 export function MovieCard({ movie }: MovieCardProps) {
+  const [posterUrl, setPosterUrl] = useState(
+    movie.poster || "/placeholder.svg",
+  );
   console.log("CARD", movie);
 
   return (
     <Card className="border-primary/20 hover:border-primary/50 overflow-hidden py-0 gap-0 transition-colors">
       <div className="aspect-2/3 w-full overflow-hidden bg-amber-400">
         <Image
-          src={movie.poster || "/placeholder.svg"}
+          src={posterUrl}
           alt={movie.title}
           width={300}
           height={450}
           className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+          onError={() => setPosterUrl("/placeholder.svg")}
         />
       </div>
       <CardContent className="p-4">
