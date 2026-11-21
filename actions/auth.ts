@@ -16,13 +16,64 @@ export async function loginUser(
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
 
-    console.log("email & password :::: ", email, password);
+    // Basic validation for email and password
+    if (!email || email === "") {
+      return {
+        message: null,
+        errors: {
+          email: ["Email is required."],
+        },
+      };
+    }
 
-    return {
-      message: "",
-      success: true,
-      errors: {},
-    };
+    if (!password || password === "") {
+      return {
+        message: null,
+        errors: {
+          password: ["Password is required."],
+        },
+      };
+    }
+
+    // Use try catch to handle any potential errors during the login process
+    try {
+      const response = await auth.api.signInEmail({
+        body: {
+          email,
+          password,
+          rememberMe: true, // Set to true to remember the user session
+        },
+      });
+
+      // For debugging purposes, log the response from the login attempt
+      console.log("Login response:", response);
+
+      return {
+        message: "User login successful!",
+        success: true,
+        errors: {},
+      };
+    } catch (error) {
+      // console.log("Login failed:", error);
+
+      if (error instanceof Error) {
+        return {
+          message: "User login failed",
+          success: false,
+          errors: {
+            general: [error.message],
+          },
+        };
+      }
+
+      return {
+        message: "User login failed",
+        success: false,
+        errors: {
+          general: ["An error occurred during login. Please try again."],
+        },
+      };
+    }
   }
 
   return {
@@ -30,12 +81,6 @@ export async function loginUser(
     success: true,
     errors: {},
   };
-
-  try {
-    //
-  } catch {
-    //
-  }
 }
 
 export async function registerUser(
