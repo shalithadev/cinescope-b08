@@ -78,6 +78,17 @@ export async function registerUser(
       };
     }
 
+    if (password.length < 8) {
+      return {
+        message: null,
+        errors: {
+          password: ["Password must be at least 8 characters long."],
+        },
+      };
+    }
+
+    // Continue with further validation like password strength, email format, etc.
+
     if (password !== confirmPassword) {
       return {
         message: "Passwords do not match",
