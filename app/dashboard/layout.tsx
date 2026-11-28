@@ -1,10 +1,19 @@
-export default function DashboardLayout({}: { children: React.ReactNode }) {
+import { SidebarProvider } from "@/components/ui/sidebar";
+import AdminHeader from "@/components/dashboard/admin-header";
+import AdminSidebar from "@/components/dashboard/admin-sidebar";
+
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div className="flex h-screen">
-      <div className="flex-1 bg-amber-300 h-full w-full"></div>
-      <div className="flex-5 bg-green-300 h-full w-full">
-        <div className="h-20 bg-violet-300"></div>
-      </div>
-    </div>
+    <SidebarProvider>
+      <AdminSidebar />
+      <main className="flex flex-col w-full">
+        <AdminHeader />
+        {children}
+      </main>
+    </SidebarProvider>
   );
 }
